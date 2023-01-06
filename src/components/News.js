@@ -39,9 +39,9 @@ export class News extends Component {
 
   render() {
     return (
-      <div className="container text-center">
+      <div className="container mx-auto text-center">
         <h1 className=" tracking-wider  font-mono  text-2xl pt-20 mx-3">
-          News4U - Headlines
+           Headlines
         </h1>
         <div className="md:columns-3">
           {this.state.articles.map((element) => {
@@ -61,10 +61,12 @@ export class News extends Component {
             );
           })}
           ;
+        
         </div>
 
         <div className="flex item-center">
-          <Spinner />
+        <Spinner />
+         
         </div>
       </div>
     );

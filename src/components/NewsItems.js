@@ -12,15 +12,15 @@ export class NewsItems extends Component {
             alt="blog"
           />
           <div className="p-6">
-            <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+            <h2 className="tracking-widest dark:text-slate-50 text-xs title-font font-medium text-gray-400 mb-1">
               {category}
             </h2>
-            <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+            <h1 className="title-font dark:text-slate-300	 text-lg font-medium text-gray-900 mb-3">
               {title}
             </h1>
-            <p className="leading-relaxed mb-3">{description}</p>
+            <p className="leading-relaxed dark:text-zinc-400 mb-3">{description}</p>
             <div className="flex items-center flex-wrap ">
-              <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href={newsExt} target="_blank">
+              <a className="text-indigo-500  inline-flex items-center md:mb-2 lg:mb-0" href={newsExt} target="_blank">
                 Learn More
                 <svg
                   className="w-4 h-4 ml-2"
