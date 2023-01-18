@@ -1,8 +1,22 @@
 import React, { Component } from "react";
 import NewsItems from "./NewsItems";
+import PropTypes from 'prop-types'
+
 import Spinner from "./Spinner";
 
 export class News extends Component {
+  static defaultProps = {
+    category : 'general',
+    pageSize : 9
+
+  }
+
+  static propTypes = {
+    category : PropTypes.string,
+    pageSize : PropTypes.number
+  }
+
+
   articles = [
     {
       source: { id: null, name: "Abplive.com" },
@@ -20,34 +34,45 @@ export class News extends Component {
     },
   ];
 
-  constructor() {
-    super();
+
+   capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  constructor(props) {
+    super(props);
     this.state = {
       articles: this.articles,
       loading: false,
+      page: 1
     };
-  }
+    document.title = `News4U - ${this.capitalizeFirstLetter(this.props.category)}`;
+  } 
+
+
 
   async componentDidMount() {
     let url =
-      "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=facf91b7181444e1b959db2332f317e5";
+      `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=facf91b7181444e1b959db2332f317e5&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.setState({loading:true});
     let data = await fetch(url);
     let parsedData = await data.json();
-    console.log(parsedData);
+    this.setState({loading:false});
     this.setState({ articles: parsedData.articles });
   }
 
   render() {
     return (
-      <div className="container mx-auto text-center">
-        <h1 className=" tracking-wider  font-mono  text-2xl pt-20 mx-3">
-           Headlines
+      <div className="container mx-auto ">
+        <h1 className=" tracking-wider text-center font-mono  text-2xl pt-20 mx-3">
+          Headlines
         </h1>
-        <div className="md:columns-3">
-          {this.state.articles.map((element) => {
+        { this.state.loading && <Spinner  />}
+        <div className=" md:columns-2 lg:columns-3">
+          { !this.state.loading && this.state.articles.map((element) => {
             return (
               <div
-                key={element.url}
+                key= {element.url}
                 className=" container px-5 py-10 text-gray-600 body-font"
               >
                 <NewsItems
@@ -55,18 +80,12 @@ export class News extends Component {
                   description={element.description}
                   imageUrl={element.urlToImage}
                   newsExt={element.url}
-                  category="Headlines"
+                  category={element.source.name}
                 />
               </div>
             );
           })}
-          ;
-        
-        </div>
-
-        <div className="flex item-center">
-        <Spinner />
-         
+          
         </div>
       </div>
     );

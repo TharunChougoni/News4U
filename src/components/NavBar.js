@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+
 
 export default class NavBar extends Component {
   render() {
-    let {cat1,cat2,cat3}=this.props
+    let { cat1, cat2, cat3, cat4, cat5, cat6, cat7 } = this.props;
     return (
-      
-      <div className="navbar fixed dark:bg-indigo-500		 bg-base-100">
+      <div className="navbar fixed bg-cyan-50 	dark:bg-indigo-500	">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -29,17 +31,27 @@ export default class NavBar extends Component {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a> {cat1} </a>
+                <Link to="/general">{cat1} </Link>
               </li>
               <li>
-                <a> {cat2} </a>
+                <Link to="/sports">{cat2} </Link>
               </li>
               <li>
-                <a> {cat3} </a>
+                <Link to="/entertainment">{cat3} </Link>
               </li>
               <li>
-                <a>About</a>
+                <Link to="/technology">{cat4} </Link>
               </li>
+              <li>
+                <Link to="/science">{cat5} </Link>
+              </li>
+              <li>
+                <Link to="/health">{cat6} </Link>
+              </li>
+              <li>
+                <Link to="/business">{cat7} </Link>
+              </li>
+
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">News4U</a>
@@ -47,22 +59,37 @@ export default class NavBar extends Component {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>{cat1}</a>
+              <Link to="/general">{cat1} </Link>
             </li>
             <li>
-              <a>{cat2}</a>
+              <Link to="/sports">{cat2} </Link>
             </li>
             <li>
-              <a>{cat3}</a>
+              <Link to="/entertainment">{cat3} </Link>
             </li>
-           
             <li>
-              <a>About</a>
+              <Link to="/technology">{cat4} </Link>
             </li>
+            <li>
+              <Link to="/science">{cat5} </Link>
+            </li>
+            <li>
+              <Link to="/health">{cat6} </Link>
+            </li>
+            <li>
+              <Link to="/business">{cat7} </Link>
+            </li>
+
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Instagram</a>
+          <a
+            className="btn"
+            href="https://www.instagram.com/__tharun__2022__/"
+            target="_blank"
+          >
+            Instagram
+          </a>
         </div>
       </div>
     );
