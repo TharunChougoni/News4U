@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-
-
 export default class NavBar extends Component {
   render() {
-    let { cat1, cat2, cat3, cat4, cat5, cat6, cat7 } = this.props;
+    let { cat2, cat3, cat4, cat5, cat6, cat7 } = this.props;
     return (
       <div className="navbar fixed bg-cyan-50 	dark:bg-indigo-500	">
         <div className="navbar-start">
@@ -31,9 +29,6 @@ export default class NavBar extends Component {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/general">{cat1} </Link>
-              </li>
-              <li>
                 <Link to="/sports">{cat2} </Link>
               </li>
               <li>
@@ -51,16 +46,14 @@ export default class NavBar extends Component {
               <li>
                 <Link to="/business">{cat7} </Link>
               </li>
-
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">News4U</a>
+          <Link className="btn btn-ghost normal-case text-xl" to="/">
+            News4U
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <Link to="/general">{cat1} </Link>
-            </li>
             <li>
               <Link to="/sports">{cat2} </Link>
             </li>
@@ -79,7 +72,6 @@ export default class NavBar extends Component {
             <li>
               <Link to="/business">{cat7} </Link>
             </li>
-
           </ul>
         </div>
         <div className="navbar-end">
@@ -87,6 +79,7 @@ export default class NavBar extends Component {
             className="btn"
             href="https://www.instagram.com/__tharun__2022__/"
             target="_blank"
+            rel="noreferrer"
           >
             Instagram
           </a>
